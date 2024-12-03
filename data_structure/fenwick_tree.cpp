@@ -10,6 +10,9 @@ using namespace std;
 
 void update(int bit[], int n, int idx, int val)
 {
+  // index in BITree[] is 1 more than the index in arr[] 
+  idx = idx + 1; 
+
   while (idx <= n)
   {
     bit[idx] += val;
@@ -30,34 +33,34 @@ int soma(int bit[], int idx)
 }
 
 int soma_range(int bit[], int l, int r) {
-    return soma(r) - soma(l - 1);
+    return soma(bit, r + 1) - soma(bit, l);
 }
 
 int main()
 {
-  READ_SPEED;
+//   READ_SPEED;
 
-  int n, num;
+  int n, num, l, r;
 
   cin >> n;
 
-  int conts[n + 2] = {0}, bit[n + 2] = {0};
+  int bit[n + 2] = {0};
 
   for (int i = 0; i < n; ++i)
   {
     cin >> num;
 
-    cout << num - soma(bit, num);
-
-    if (i < n - 1)
-      cout << " ";
-
-    conts[num] = 1;
-
-    update(bit, n, num, 1);
+    update(bit, n, i, num);
   }
 
-  cout << endl;
+  cout << soma(bit, 3) << endl;
+
+  cout << "Entre com index left e right:" << endl;
+
+  cin >> l >> r;
+
+  // Soma do index l até r
+  cout << soma_range(bit, l, r) << endl;
 
   return 0;
 }
