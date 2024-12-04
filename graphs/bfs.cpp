@@ -74,7 +74,7 @@ void bfs_with_path(vector<vector<int>> &adj, int start_node, int destiny, vector
 
 int main()
 {
-  int vertices = 5;
+  int vertices = 6;
 
   vector<vector<int>> adj(vertices);
 
@@ -83,10 +83,18 @@ int main()
   adj[0].push_back(1);
   adj[0].push_back(2);
   adj[1].push_back(3);
-  adj[1].push_back(4);
+  adj[1].push_back(5);
+  adj[5].push_back(4);
   adj[2].push_back(4);
 
   int visited[vertices + 1] = {0};
 
+  cout << "Normal BFS: " << endl;
   bfs(adj, 0, visited);
+
+  cout << "Tamanho menor caminho: " << endl;
+  vector<int> par(vertices, -1);
+  vector<int> dist(vertices, 1e9);
+
+  bfs_with_path(adj, 0, 4, par, dist);
 }

@@ -10,8 +10,8 @@ using namespace std;
 
 void update(int bit[], int n, int idx, int val)
 {
-  // index in BITree[] is 1 more than the index in arr[] 
-  idx = idx + 1; 
+  // index in BITree[] is 1 more than the index in arr[]
+  idx = idx + 1;
 
   while (idx <= n)
   {
@@ -32,13 +32,14 @@ int soma(int bit[], int idx)
   return sum;
 }
 
-int soma_range(int bit[], int l, int r) {
-    return soma(bit, r + 1) - soma(bit, l);
+int soma_range(int bit[], int l, int r)
+{
+  return soma(bit, r + 1) - soma(bit, l);
 }
 
 int main()
 {
-//   READ_SPEED;
+  //   READ_SPEED;
 
   int n, num, l, r;
 
@@ -52,6 +53,15 @@ int main()
 
     update(bit, n, i, num);
   }
+
+  cout << "Print bit: " << endl;
+
+  for (int i = 0; i < n + 2; ++i)
+  {
+    cout << bit[i] << " ";
+  }
+
+  cout << endl;
 
   cout << soma(bit, 3) << endl;
 

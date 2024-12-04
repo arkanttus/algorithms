@@ -17,3 +17,22 @@ void dfs(vector<vector<int>> adj, int start_node, int visited[])
     if (!visited[next_node])
       dfs(adj, next_node, visited);
 }
+
+int main()
+{
+  int vertices = 5;
+
+  vector<vector<int>> adj(vertices);
+
+  // add vertices
+  // adj[a] -> [..., b, c]
+  adj[0].push_back(1);
+  adj[0].push_back(2);
+  adj[1].push_back(3);
+  adj[1].push_back(4);
+  adj[2].push_back(4);
+
+  int visited[vertices + 1] = {0};
+
+  dfs(adj, 0, visited);
+}
